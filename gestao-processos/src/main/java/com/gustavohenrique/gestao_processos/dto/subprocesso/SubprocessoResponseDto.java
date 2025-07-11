@@ -1,4 +1,4 @@
-package dto.subprocesso;
+package com.gustavohenrique.gestao_processos.dto.subprocesso;
 
 import java.time.Instant;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package entity;
+package com.gustavohenrique.gestao_processos.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;

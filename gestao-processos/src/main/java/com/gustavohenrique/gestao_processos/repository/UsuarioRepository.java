@@ -1,6 +1,6 @@
-package repository;
+package com.gustavohenrique.gestao_processos.repository;
 
-import entity.Usuario;
+import com.gustavohenrique.gestao_processos.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

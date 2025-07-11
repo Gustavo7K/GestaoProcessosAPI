@@ -1,4 +1,4 @@
-package dto.quadro;
+package com.gustavohenrique.gestao_processos.dto.quadro;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

@@ -1,6 +1,6 @@
-package dto.processo;
+package com.gustavohenrique.gestao_processos.dto.processo;
 
-import dto.subprocesso.SubprocessoResponseDto;
+import com.gustavohenrique.gestao_processos.dto.subprocesso.SubprocessoResponseDto;
 
 import java.time.Instant;
 import java.util.List;

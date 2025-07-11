@@ -1,4 +1,4 @@
-package dto.subprocesso;
+package com.gustavohenrique.gestao_processos.dto.subprocesso;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

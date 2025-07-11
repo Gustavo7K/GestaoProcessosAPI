@@ -1,8 +1,8 @@
-package service;
+package com.gustavohenrique.gestao_processos.service;
 
-import entity.Usuario;
+import com.gustavohenrique.gestao_processos.entity.Usuario;
 import org.springframework.stereotype.Service;
-import repository.UsuarioRepository;
+import com.gustavohenrique.gestao_processos.repository.UsuarioRepository;
 
 import java.util.Optional;
 import java.util.UUID;

@@ -1,6 +1,6 @@
-package dto.processo;
+package com.gustavohenrique.gestao_processos.dto.processo;
 
-import dto.subprocesso.SubprocessoCreateDto;
+import com.gustavohenrique.gestao_processos.dto.subprocesso.SubprocessoCreateDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
