@@ -16,6 +16,10 @@ public class UsuarioService {
     }
 
     public Usuario cadastrarUsuario(String nome, String email, String senha){
+        if (usuarioRepository.findByEmail(email).isPresent()) {
+            throw new IllegalArgumentException("Email já cadastrado");
+        }
+
         Usuario usuario = new Usuario(nome, email, senha);
         return usuarioRepository.save(usuario);
     }
