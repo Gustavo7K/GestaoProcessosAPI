@@ -22,7 +22,7 @@ public class UsuarioQuadroService {
 
     public void vincularUsuario(Usuario usuario, Quadro quadro, UsuarioQuadro.Role role){
         if (usuarioQuadroRepository.existsByUsuarioIdAndQuadroId(usuario.getId(), quadro.getId())){
-            throw new IllegalArgumentException("Usuario Já está vinculado a este quadro");
+            throw new IllegalArgumentException("Usuario já está vinculado a este quadro");
         } //verifica se esse vínculo já existe no banco. Se sim, lança uma exceção para impedir inserção duplicada.
         UsuarioQuadro vinculo = new UsuarioQuadro();
         vinculo.setUsuario(usuario);
