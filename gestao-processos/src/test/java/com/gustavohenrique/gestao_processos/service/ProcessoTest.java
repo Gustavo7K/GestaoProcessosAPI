@@ -1,13 +1,11 @@
 package com.gustavohenrique.gestao_processos.service;
 
 import com.gustavohenrique.gestao_processos.dto.processo.ProcessoCreateDto;
-import com.gustavohenrique.gestao_processos.dto.quadro.QuadroCreateDto;
 import com.gustavohenrique.gestao_processos.dto.subprocesso.SubprocessoCreateDto;
 import com.gustavohenrique.gestao_processos.entity.Processo;
 import com.gustavohenrique.gestao_processos.entity.Quadro;
 import com.gustavohenrique.gestao_processos.repository.ProcessoRepository;
 import com.gustavohenrique.gestao_processos.repository.QuadroRepository;
-import com.gustavohenrique.gestao_processos.repository.UsuarioRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
