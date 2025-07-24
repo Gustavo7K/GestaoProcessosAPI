@@ -7,5 +7,6 @@ import java.util.List;
 import java.util.UUID;
 
 public interface SubprocessoRepository extends JpaRepository<SubProcesso, UUID> {
+
     List<SubProcesso>findByProcessoId(UUID processoid);
 }
