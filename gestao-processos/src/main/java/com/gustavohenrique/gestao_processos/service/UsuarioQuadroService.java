@@ -24,6 +24,7 @@ public class UsuarioQuadroService {
         if (usuarioQuadroRepository.existsByUsuarioIdAndQuadroId(usuario.getId(), quadro.getId())){
             throw new IllegalArgumentException("Usuario já está vinculado a este quadro");
         } //verifica se esse vínculo já existe no banco. Se sim, lança uma exceção para impedir inserção duplicada.
+
         UsuarioQuadro vinculo = new UsuarioQuadro();
         vinculo.setUsuario(usuario);
         vinculo.setQuadro(quadro);
@@ -35,7 +36,8 @@ public class UsuarioQuadroService {
     public void promoverUsuario(UUID usuarioId, UUID quadroId, UsuarioQuadro.Role novaRole) {
         UsuarioQuadro vinculo = usuarioQuadroRepository.findByUsuarioIdAndQuadroId(usuarioId, quadroId)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário não vinculado ao quadro"));
-    //Recupera o vínculo existente. Se não encontrar, lança exceção (o usuário não pertence a este quadro).
+        //Recupera o vínculo existente. Se não encontrar, lança exceção (o usuário não pertence a este quadro).
+
         vinculo.setRole(novaRole);
         usuarioQuadroRepository.save(vinculo);
     }
