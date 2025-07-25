@@ -57,7 +57,6 @@ public class UsuarioQuadroService {
         }).toList();
     }
 
-    //Verifica se o usuário tem papel de ADMIN no quadro
     public boolean isAdmin(UUID usuarioId, UUID quadroId) {
         return usuarioQuadroRepository.existsByUsuarioIdAndQuadroIdAndRole(usuarioId, quadroId, UsuarioQuadro.Role.ADMIN);
     }
