@@ -57,6 +57,23 @@ public class SubprocessoServiceTest {
     }
 
     @Test
+    public void deveLancarErroSeProcessoNaoExisteAoCriarSubprocesso() {
+        UUID processoId = UUID.randomUUID();
+
+        SubprocessoCreateDto dto = new SubprocessoCreateDto();
+        dto.setNome("Falho");
+        dto.setDescricao("Sem processo");
+
+        when(processoRepository.findById(processoId)).thenReturn(Optional.empty());
+
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {
+            subprocessoService.criarSubprocesso(processoId, dto);
+        });
+
+        assertEquals("Processo não encontrado", e.getMessage());
+    }
+
+    @Test
     public void deveListarSubprocessosPorProcesso() {
         UUID processoId = UUID.randomUUID();
 
