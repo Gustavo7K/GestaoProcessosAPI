@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface QuadroRepository extends JpaRepository<Quadro, UUID> {
-    List<Quadro> findByUsuario(UUID usuarioId);
+    List<Quadro> findByCriadorId(UUID criadorId);
 }
