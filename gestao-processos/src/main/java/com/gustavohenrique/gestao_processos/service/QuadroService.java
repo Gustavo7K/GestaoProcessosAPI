@@ -43,7 +43,7 @@ public class QuadroService {
     }
 
     public List<Quadro> listarQuadrosPorUsuario(UUID usuarioId){
-        return quadroRepository.findByUsuario(usuarioId);
+        return quadroRepository.findByCriadorId(usuarioId);
     }
 
     public void deletarQuadro(UUID quadroId, UUID usuarioId) throws IllegalAccessException {
