@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 @Table(name = "quadros")
 public class Quadro {
+    @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
