@@ -4,6 +4,7 @@ import com.gustavohenrique.gestao_processos.dto.usuario.UsuarioCreateDto;
 import com.gustavohenrique.gestao_processos.dto.usuario.UsuarioResponseDto;
 import com.gustavohenrique.gestao_processos.entity.Usuario;
 import com.gustavohenrique.gestao_processos.service.UsuarioService;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class UsuarioController {
                 .body(new UsuarioResponseDto(novo.getId(), novo.getNome(), novo.getEmail()));
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<UsuarioResponseDto> buscarPorId(@PathVariable UUID id){
         Usuario buscaU = usuarioService.buscarPorId(id);
         return ResponseEntity.ok(new UsuarioResponseDto(buscaU.getId(), buscaU.getNome(), buscaU.getEmail()));
@@ -40,4 +41,10 @@ public class UsuarioController {
                 .orElse(ResponseEntity.notFound().build());
 
     }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Void> tratarNotFound(EntityNotFoundException ex) {
+        return ResponseEntity.notFound().build();
+    }
+
 }
