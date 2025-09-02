@@ -1,6 +1,7 @@
 package com.gustavohenrique.gestao_processos.service;
 
 import com.gustavohenrique.gestao_processos.entity.Usuario;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import com.gustavohenrique.gestao_processos.repository.UsuarioRepository;
 
@@ -26,7 +27,7 @@ public class UsuarioService {
 
     public Usuario buscarPorId(UUID id){
         return usuarioRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Usuario não encontrado"));
+                .orElseThrow(() -> new EntityNotFoundException("Usuario não encontrado"));
     }
 
     public Optional<Usuario> buscarPorEmail(String email){
