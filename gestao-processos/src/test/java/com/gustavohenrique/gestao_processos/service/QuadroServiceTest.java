@@ -104,13 +104,13 @@ public class QuadroServiceTest {
         //Cria dois quadros simulados e os coloca em uma lista como se fossem os quadros que o usuário possui
         List<Quadro> lista = List.of(quadro1, quadro2);
 
-        when(quadroRepository.findByUsuario(usuarioId)).thenReturn(lista);
+        when(quadroRepository.findByCriadorId(usuarioId)).thenReturn(lista);
 
         List<Quadro> resultado = quadroService.listarQuadrosPorUsuario(usuarioId);
 
         //Verifica se o métod retornou exatamente os dois quadros simulados.
         assertEquals(2, resultado.size());
-        verify(quadroRepository).findByUsuario(usuarioId);
+        verify(quadroRepository).findByCriadorId(usuarioId);
     }
 
 }
