@@ -4,9 +4,11 @@ import com.gustavohenrique.gestao_processos.dto.quadro.QuadroCreateDto;
 import com.gustavohenrique.gestao_processos.entity.Quadro;
 import com.gustavohenrique.gestao_processos.entity.Usuario;
 import com.gustavohenrique.gestao_processos.entity.UsuarioQuadro;
+import com.gustavohenrique.gestao_processos.exception.PermissaoNegadaException;
 import com.gustavohenrique.gestao_processos.repository.QuadroRepository;
 import com.gustavohenrique.gestao_processos.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -42,17 +44,20 @@ public class QuadroService {
                 .orElseThrow(() -> new IllegalArgumentException("Quadro não encontrado"));
     }
 
-    public List<Quadro> listarQuadrosPorUsuario(UUID usuarioId){
-        return quadroRepository.findByCriadorId(usuarioId);
+    @Transactional(readOnly = true)
+    public List<Quadro> listarQuadrosPorUsuario(UUID usuarioId) {
+        // Ordenar ajuda a manter consistência nos testes
+        return quadroRepository.findByCriadorIdOrderByNomeAsc(usuarioId);
     }
 
-    public void deletarQuadro(UUID quadroId, UUID usuarioId) throws IllegalAccessException {
-        // Verifica se o usuário é ADMIN no quadro
+
+    public void deletarQuadro(UUID quadroId, UUID usuarioId) {
         boolean isAdmin = usuarioQuadroService.isAdmin(usuarioId, quadroId);
         if (!isAdmin) {
-            throw new IllegalAccessException("Você não tem permissão para deletar este quadro"); //todo
+            throw new PermissaoNegadaException("Você não tem permissão para deletar este quadro");
         }
 
         quadroRepository.deleteById(quadroId);
     }
+
 }
